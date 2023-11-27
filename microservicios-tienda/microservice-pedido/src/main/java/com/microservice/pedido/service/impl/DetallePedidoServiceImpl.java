@@ -27,12 +27,12 @@ public class DetallePedidoServiceImpl implements DetallePedidoService {
     }
 
     @Override
-    public DetallePedido findById(Long id) {
-        return detallePedidoRepository.findById(id).orElseThrow();
+    public void deleteDetallePedido(Long id) {
+        detallePedidoRepository.deleteById(id);
     }
 
     @Override
-    public void deleteDetallePedido(Long id) {
-        detallePedidoRepository.deleteById(id);
+    public List<DetallePedido> findAllByPedido(Long id) {
+        return this.detallePedidoRepository.findAllByPedido(id);
     }
 }
