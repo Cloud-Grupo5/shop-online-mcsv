@@ -10,6 +10,7 @@ public interface DetallePedidoService {
 
     List<DetallePedido> findAllDetallePedidos();
 
+    void deleteDetallePedido(Long id);
 
-
+    List<DetallePedido> findAllByPedido(Long id);
 }
