@@ -31,4 +31,14 @@ public class CategoriaServiceImpl implements CategoriaService {
     public List<Producto> findProductosByCategoria(Long id) {
         return null;
     }
+
+    @Override
+    public void deleteCategory(Long id) {
+        this.categoriaRepository.deleteById(id);
+    }
+
+    @Override
+    public Categoria findById(Long id) {
+        return categoriaRepository.findById(id).orElseThrow();
+    }
 }
