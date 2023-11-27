@@ -3,6 +3,7 @@ package com.microservice.producto.controller;
 import com.microservice.producto.model.Categoria;
 import com.microservice.producto.service.CategoriaService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,8 +30,16 @@ public class CategoriaController {
         return categoriaService.findAllCategorias();
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> eliminarCategoria(@PathVariable Long id){
+        this.categoriaService.deleteCategory(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 
-
+    @GetMapping("/buscar/{id}")
+    public ResponseEntity<Categoria> buscarCategoriaId(@PathVariable Long id) {
+        return ResponseEntity.ok(categoriaService.findById(id));
+    }
 
 
 }
