@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootTest
 public class UsuarioServiceTest {
@@ -38,7 +39,24 @@ public class UsuarioServiceTest {
         usuarioList = usuarioRepository.findAll();
         Assertions.assertNotNull(usuarioList);
     }
-    
+
+    @Test
+    public void findUserIdTestSuccess(){
+        Usuario user = new Usuario(1L, "Favio","Angulo" ,"fangulos1@upao.edu.pe","1234","Trujillo");
+        Usuario createUser = usuarioRepository.save(user);
+        Optional<Usuario> userFind = usuarioRepository.findById(createUser.getId());
+        Assertions.assertEquals(createUser, userFind.get());
+    }
+
+    @Test
+    public void findUserIdTestFailed(){
+        Usuario user = new Usuario(1L, "Favio","Angulo" ,"fangulos1@upao.edu.pe","1234","Trujillo");
+        Usuario createUser = usuarioRepository.save(user);
+        Optional<Usuario> userFind = usuarioRepository.findById(2L);
+        Assertions.assertNotEquals(createUser, userFind.orElse(null));
+    }
+
+
 
 
 
