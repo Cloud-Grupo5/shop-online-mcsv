@@ -26,4 +26,14 @@ public class PedidoServiceImpl implements PedidoService {
     public List<Pedido> findAllPedidos() {
         return pedidoRepository.findAll();
     }
+
+    @Override
+    public Pedido findById(Long id) {
+        return pedidoRepository.findById(id).orElseThrow();
+    }
+
+    @Override
+    public void deletePedido(Long id) {
+        pedidoRepository.deleteById(id);
+    }
 }

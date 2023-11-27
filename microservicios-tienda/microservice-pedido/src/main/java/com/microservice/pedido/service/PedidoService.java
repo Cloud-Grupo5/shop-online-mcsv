@@ -10,4 +10,7 @@ public interface PedidoService {
 
     List<Pedido> findAllPedidos();
 
+    Pedido findById(Long id);
+
+    void deletePedido(Long id);
 }

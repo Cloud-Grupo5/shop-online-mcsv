@@ -16,7 +16,6 @@ public class DetallePedidoServiceImpl implements DetallePedidoService {
         this.detallePedidoRepository = detallePedidoRepository;
     }
 
-
     @Override
     public void addDetallePedido(DetallePedido detallePedido) {
         this.detallePedidoRepository.save(detallePedido);
@@ -25,5 +24,15 @@ public class DetallePedidoServiceImpl implements DetallePedidoService {
     @Override
     public List<DetallePedido> findAllDetallePedidos() {
         return this.detallePedidoRepository.findAll();
+    }
+
+    @Override
+    public DetallePedido findById(Long id) {
+        return detallePedidoRepository.findById(id).orElseThrow();
+    }
+
+    @Override
+    public void deleteDetallePedido(Long id) {
+        detallePedidoRepository.deleteById(id);
     }
 }
